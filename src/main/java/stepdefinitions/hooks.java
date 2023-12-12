@@ -18,6 +18,6 @@ public class hooks {
 
     @After
     public void tearDown(){
-        // keyword.quitAllWindows();
+        keyword.quitAllWindows();
     }
 }
