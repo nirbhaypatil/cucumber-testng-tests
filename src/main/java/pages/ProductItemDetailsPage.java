@@ -106,7 +106,7 @@ public class ProductItemDetailsPage {
                 }
             }
         }
-        System.out.println(sizesSelected.size()+" selected number of sizes...");
+        System.out.println(sizesSelected.size()+" selected from number of sizes...");
         return sizesSelected.size();
     }
 

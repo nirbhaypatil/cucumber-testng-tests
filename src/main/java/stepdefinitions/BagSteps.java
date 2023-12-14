@@ -4,10 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.CartCheckOutPage;
-import pages.MainMenu;
-import pages.ProductItemDetailsPage;
-import pages.SearchResultsPage;
+import pages.*;
 import org.testng.Assert;
 
 
@@ -77,10 +74,39 @@ public class BagSteps {
         CartCheckOutPage bagPage = new CartCheckOutPage();
         Assert.assertTrue(bagPage.isCartEmpty());
     }
+
     @Then("selected item should get added in bag")
     public void selected_item_should_be_displayed_in_bag() {
         ProductItemDetailsPage productItem = new ProductItemDetailsPage();
         Assert.assertEquals(productItem.getItemAddedInBag(),"1");
+    }
+
+
+    @When("chooses all available sizes")
+    public void chooses_all_available_sizes() {
+        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
+        //Choose size of product
+        productItem.selectAllSizes();
+    }
+    @Then("only single size is selected")
+    public void only_single_size_is_selected() {
+        //Verify only single size is selected.
+        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
+        Assert.assertEquals(productItem.getTotalSizesSelected(),1);
+    }
+
+    @When("applies at least a coupon from available options")
+    public void applies_at_least_a_coupon_from_available_options() {
+        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
+        productItem.goToBag();
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        bagPage.applyCoupon();
+        ApplyCouponPage coupon = new ApplyCouponPage();
+        coupon.clickApplyCoupon();    }
+    @Then("coupon discount should be applied in price details")
+    public void coupoun_discount_should_be_applied_in_price_details() {
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        Assert.assertTrue(bagPage.isCouponApplied());
     }
 
 }
