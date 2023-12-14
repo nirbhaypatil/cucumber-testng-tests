@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.CartCheckOutPage;
 import pages.MainMenu;
 import pages.ProductItemDetailsPage;
 import pages.SearchResultsPage;
@@ -62,6 +63,23 @@ public class BagSteps {
         ProductItemDetailsPage productItem = new ProductItemDetailsPage();
         productItem.addToBag();
     }
+<<<<<<< HEAD
+=======
+
+    @When("removes it from bag")
+    public void removes_it_from_a_bag() {
+        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
+        productItem.goToBag();
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        bagPage.removeItemFromBag();
+    }
+
+    @Then("bag should be empty")
+    public void bag_should_be_empty(){
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        Assert.assertTrue(bagPage.isCartEmpty());
+    }
+
     @Then("selected item should get added in bag")
     public void selected_item_should_be_displayed_in_bag() {
         ProductItemDetailsPage productItem = new ProductItemDetailsPage();
