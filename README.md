@@ -13,20 +13,7 @@ regression tests for myntra.com
     - Cucumber
 5. Git bash to run tests from command line
 
-## Features:
-
-- Crisp & Clear maven folder structures
-- Extensive methods in CucumberRunner class
-- CucumberOptions with detailed explanation of using "tags", "glue" ,”monochrome” , “pulgins”
-- Screenshots on failure feature in CucumberRunner class
-- TestNG and cucumber Annotations/hooks like "@After", “@Before” etc.
-- Descriptive pom.xml and testng.xml
-- Scenarios for Regression suite features and step definition files
-- Methods for running tests in Firefox and Chrome and Edge browsers
-
-
 # How to run test cases [from command line or git bash terminal]
-
 - First clone this repo, keeping same folder structure and wait for clone to finish
 
 # To run scripts on local machine browser with tags e.g.
@@ -54,4 +41,3 @@ The scripts should run successfully in Chrome browser and should generate applic
 
     Resources for the test cases should be put in this folder.
     i. Features-  Here we are writing features scenarios as below
-     
