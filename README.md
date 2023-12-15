@@ -1,5 +1,5 @@
-# Test cases for myntra.com
-# using cucumber, testng and page object model
+## Test cases for myntra.com using 
+## cucumber, testng and page object model
 
 This repository contains a collection of 
 regression tests for myntra.com
@@ -13,14 +13,14 @@ regression tests for myntra.com
     - Cucumber
 5. Git bash to run tests from command line
 
-# How to run test cases [from command line or git bash terminal]
+## How to run test cases [from command line or git bash terminal]
 - First clone this repo, keeping same folder structure and wait for clone to finish
 
-# To run scripts on local machine browser with tags e.g.
+## To run scripts on local machine browser with tags e.g.
     mvn clean test -Dcucumber.filter.tags=@Regression
 The scripts should run successfully in Chrome browser and should generate application logs
 
-# Folder structure
+## Folder structure
 **src/main/java**
 
     Inside this folder all framework related code is placed.
