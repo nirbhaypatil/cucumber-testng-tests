@@ -43,9 +43,32 @@ public class BagSteps {
         menu.hoverOn("men");
         menu.clickOnMenuItem("Jeans");
     }
+    @Given("User is on men jackets page")
+    public void user_is_on_men_jackets_page() {
+        MainMenu menu = new MainMenu();
+        menu.hoverOn("men");
+        menu.clickOnMenuItem("jackets");
+    }
+    @When("User selects a jacket from displayed results")
+    public void user_selects_a_jacket_from_displayed_results() {
+        SearchResultsPage searchResults = new SearchResultsPage();
+        searchResults.selectFirstProduct();
+    }
+    @When("enters delivery pincode {string}")
+    public void enters_delivery_pincode(String pincode) {
+        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
+        productItem.goToBag();
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        bagPage.enterPinCode(pincode);
+    }
+    @Then("pincode {string} should be visible on checkout page")
+    public void pincode_should_be_visible_on_checkout_page(String pincode) {
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        Assert.assertTrue(bagPage.getDeliverToPinCode().contains(pincode));
+    }
 
-    @When("User selects a jeans products from displayed results")
-    public void user_selects_a_jeans_products_from_displayed_results() {
+    @When("User selects a jeans from displayed results")
+    public void user_selects_a_jeans_from_displayed_results() {
         SearchResultsPage searchResults = new SearchResultsPage();
         searchResults.selectFirstProduct();
     }

@@ -42,7 +42,6 @@ public class SearchResultsPage {
         for ( WebElement itemPrice : itemPrices ) {
             prices.add( Integer.parseInt(itemPrice.getText().split("Rs. ",-1)[1]));
         }
-        System.out.println(prices);
        return prices;
     }
 
