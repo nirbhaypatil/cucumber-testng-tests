@@ -63,6 +63,8 @@ public class BagSteps {
         ProductItemDetailsPage productItem = new ProductItemDetailsPage();
         productItem.addToBag();
     }
+<<<<<<< HEAD
+=======
 
     @When("removes it from bag")
     public void removes_it_from_a_bag() {
@@ -77,6 +79,7 @@ public class BagSteps {
         CartCheckOutPage bagPage = new CartCheckOutPage();
         Assert.assertTrue(bagPage.isCartEmpty());
     }
+
     @Then("selected item should get added in bag")
     public void selected_item_should_be_displayed_in_bag() {
         ProductItemDetailsPage productItem = new ProductItemDetailsPage();
