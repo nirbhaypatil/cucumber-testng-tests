@@ -83,6 +83,8 @@ public class BagSteps {
         ProductItemDetailsPage productItem = new ProductItemDetailsPage();
         productItem.addToBag();
     }
+<<<<<<< HEAD
+=======
 
     @When("removes it from bag")
     public void removes_it_from_a_bag() {
