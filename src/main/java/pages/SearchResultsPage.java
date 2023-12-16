@@ -51,7 +51,7 @@ public class SearchResultsPage {
        List<WebElement> options = listSortBy.findElements(By.cssSelector("li label"));
 
         switch(criteria.toLowerCase()){
-           case "hightolow":
+           case "high to low":
 
                for ( WebElement option: options) {
                    if(option.getText().equalsIgnoreCase("Price: High to Low")) {
@@ -61,7 +61,7 @@ public class SearchResultsPage {
                }
                WaitFor.waitForElementToPresent(searchResult);
                break;
-           case "lowtohigh":
+           case "low to high":
            for ( WebElement option: options) {
                if(option.getText().equalsIgnoreCase("Price: Low to High")) {
                    option.click();
