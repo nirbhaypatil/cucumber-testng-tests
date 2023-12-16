@@ -18,27 +18,7 @@ public class SortProductSteps {
         menu.hoverOn("MEN");
         menu.clickOnMenuItem("T-Shirts");
     }
-//    @When("product items are sorted by high to low")
-//    public void product_items_are_sorted_by_high_to_low() {
-//        SearchResultsPage searchResults = new SearchResultsPage();
-//        searchResults.sortByPrices("hightolow");
-//    }
-//    @Then("tshirts should be displayed in ascending order by prices")
-//    public void tshirts_should_be_displayed_in_ascending_order_by_prices() {
-//        SearchResultsPage searchResults = new SearchResultsPage();
-//        List<Integer> prices =  searchResults.getPrices();
-//        SoftAssert softly = new SoftAssert();
-//        for( int i =0 ; i< prices.size()-1;i++ ){
-//            softly.assertTrue(prices.get(i).compareTo(prices.get(i+1)) <= 0,"Prices not in high to low order.");
-//        }
-//        softly.assertAll();
-//    }
-//
-//    @When("product items are sorted by low to high")
-//    public void product_items_are_sorted_by_low_to_high() {
-//        SearchResultsPage searchResults = new SearchResultsPage();
-//        searchResults.sortByPrices("lowtohigh");
-//    }
+    
     @Then("tshirts should be displayed in {string} order by prices")
     public void tshirts_should_be_displayed_in_descending_order_by_prices(String order) {
         System.out.println(order);
