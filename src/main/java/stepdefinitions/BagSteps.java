@@ -125,7 +125,9 @@ public class BagSteps {
         CartCheckOutPage bagPage = new CartCheckOutPage();
         bagPage.applyCoupon();
         ApplyCouponPage coupon = new ApplyCouponPage();
-        coupon.clickApplyCoupon();    }
+        coupon.clickApplyCoupon();
+    }
+
     @Then("coupon discount should be applied in price details")
     public void coupoun_discount_should_be_applied_in_price_details() {
         CartCheckOutPage bagPage = new CartCheckOutPage();
