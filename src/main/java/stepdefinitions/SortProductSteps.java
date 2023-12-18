@@ -18,7 +18,7 @@ public class SortProductSteps {
         menu.hoverOn("MEN");
         menu.clickOnMenuItem("T-Shirts");
     }
-    
+
     @Then("tshirts should be displayed in {string} order by prices")
     public void tshirts_should_be_displayed_in_descending_order_by_prices(String order) {
         System.out.println(order);
