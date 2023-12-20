@@ -7,8 +7,6 @@ import io.cucumber.java.en.When;
 import pages.*;
 import org.testng.Assert;
 
-
-
 public class BagSteps {
 
     @Given("User is on kids shorts page")
