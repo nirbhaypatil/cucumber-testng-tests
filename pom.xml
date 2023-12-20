@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>testng-dataprovider</artifactId>
+  <artifactId>cucumber-testng-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>testng-practice</name>
+  <name>cucumber-testng-demo</name>
   <url>http://maven.apache.org</url>
 
   <properties>
