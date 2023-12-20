@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import waits.WaitFor;
+
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +27,10 @@ public class SearchResultsPage {
     @FindBy(css="div.sort-sortBy")
     public WebElement listSortBy;
 
-    @FindBy(css="ul.discount-list li input")
+    @FindBy(css="ul.discount-list > li:nth-child(1) > label:nth-child(1) > input:nth-child(1)")
+    public WebElement discountPerOption;
+
+    @FindBy(css="ul.discount-list li label")
     public List<WebElement> discountPerOptions;
 
     public SearchResultsPage(){
@@ -80,21 +85,18 @@ public class SearchResultsPage {
     }
 
     public void filterByDiscount(String discount) throws InterruptedException {
-        WaitFor.waitForElementToBeClickable(listSortBy);
+    
         HashMap<String,String> map = new HashMap<String,String>();
         map.put("10% and above","10.0 TO 100.0");
         map.put("20% and above","20.0 TO 100.0");
 
-        for ( WebElement discountItem : discountPerOptions) {
-            if(discountItem.getAttribute("value").equalsIgnoreCase(map.get(discount))){
-                Actions action = new Actions(Keyword.getDriver());
-                action.moveToElement(discountItem).perform();
-              System.out.println(discountItem.getAttribute("value"));
+        for ( WebElement discountItem: discountPerOptions) {
+            if(discountItem.findElement(By.cssSelector("input")).getAttribute("value").equalsIgnoreCase(map.get(discount))){
+              //System.out.println(discountItem.getAttribute("value"));
               discountItem.click();
               break;
             }
 
         }
-        Thread.sleep(10000);
     }
 }
