@@ -4,11 +4,12 @@ import errors.InvalidMenuItemException;
 import keywords.Keyword;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import waits.WaitFor;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SearchResultsPage {
@@ -23,6 +24,9 @@ public class SearchResultsPage {
 
     @FindBy(css="div.sort-sortBy")
     public WebElement listSortBy;
+
+    @FindBy(css="ul.discount-list li input")
+    public List<WebElement> discountPerOptions;
 
     public SearchResultsPage(){
         PageFactory.initElements(Keyword.getDriver(),this);
@@ -73,5 +77,24 @@ public class SearchResultsPage {
            default:
                throw new InvalidMenuItemException(criteria);
        }
+    }
+
+    public void filterByDiscount(String discount) throws InterruptedException {
+        WaitFor.waitForElementToBeClickable(listSortBy);
+        HashMap<String,String> map = new HashMap<String,String>();
+        map.put("10% and above","10.0 TO 100.0");
+        map.put("20% and above","20.0 TO 100.0");
+
+        for ( WebElement discountItem : discountPerOptions) {
+            if(discountItem.getAttribute("value").equalsIgnoreCase(map.get(discount))){
+                Actions action = new Actions(Keyword.getDriver());
+                action.moveToElement(discountItem).perform();
+              System.out.println(discountItem.getAttribute("value"));
+              discountItem.click();
+              break;
+            }
+
+        }
+        Thread.sleep(10000);
     }
 }
