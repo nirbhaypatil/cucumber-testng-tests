@@ -10,5 +10,3 @@ Feature:  Verify product items can be filtered by criteria
       | range         | percentage |
       | 10% and above | 10         |
       | 20% and above | 20         |
-
-
