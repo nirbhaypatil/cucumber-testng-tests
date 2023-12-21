@@ -85,7 +85,7 @@ public class SearchResultsPage {
     }
 
     public void filterByDiscount(String discount) throws InterruptedException {
-    
+
         HashMap<String,String> map = new HashMap<String,String>();
         map.put("10% and above","10.0 TO 100.0");
         map.put("20% and above","20.0 TO 100.0");
