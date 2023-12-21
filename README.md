@@ -17,8 +17,12 @@ regression tests for myntra.com
 - First clone this repo, keeping same folder structure and wait for clone to finish
 
 ## To run scripts on local machine browser with tags e.g.
-    mvn clean test -Dcucumber.filter.tags=@Regression
+    mvn clean test -Dcucumber.filter.tags=@wip
 The scripts should run successfully in Chrome browser and should generate application logs
+
+## To generate allure report after test run
+## allure-maven plug in is used as bypass to install allure tool
+    mvn allure:serve 
 
 ## Folder structure
 **src/main/java**
