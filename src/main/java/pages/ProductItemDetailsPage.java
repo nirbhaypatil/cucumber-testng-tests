@@ -1,10 +1,11 @@
 package pages;
 
 import keywords.Keyword;
+import waits.WaitFor;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import waits.WaitFor;
 
 import java.util.ArrayList;
 import java.util.List;

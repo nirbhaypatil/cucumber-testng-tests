@@ -133,5 +133,4 @@ public class BagSteps {
         CartCheckOutPage bagPage = new CartCheckOutPage();
         Assert.assertTrue(bagPage.isCouponApplied());
     }
-
 }

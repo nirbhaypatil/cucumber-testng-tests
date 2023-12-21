@@ -1,7 +1,7 @@
 package waits;
 
-import errors.InvalidSelectorException;
-import keywords.Keyword;
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -9,11 +9,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
-import java.time.Duration;
+import errors.InvalidSelectorException;
+import keywords.Keyword;
 
 public class WaitFor {
-
-    private static FluentWait wait = null;
+	private static FluentWait wait = null;
     static {
         wait = new FluentWait<WebDriver>(Keyword.getDriver());
         wait.pollingEvery(Duration.ofMillis(500));
@@ -80,4 +80,5 @@ public class WaitFor {
     public static void waitForElementToContainText(WebElement cart,String text) {
         wait.until(ExpectedConditions.textToBePresentInElement(cart,text));
     }
+
 }
