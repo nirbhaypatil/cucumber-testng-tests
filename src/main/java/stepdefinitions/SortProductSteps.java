@@ -30,14 +30,12 @@ public class SortProductSteps {
             case "descending":
                 for( int i =0 ; i< prices.size()-1;i++ ){
                     softly.assertTrue(prices.get(i).compareTo(prices.get(i+1)) >= 0,"Prices not in high to low order.");
-
                 }
                 softly.assertAll();
                 break;
             case "ascending":
                 for( int i =0 ; i< prices.size()-1;i++ ){
                     softly.assertTrue(prices.get(i).compareTo(prices.get(i+1)) <= 0,"Prices not in low to high order.");
-
                 }
                 softly.assertAll();
                 break;
