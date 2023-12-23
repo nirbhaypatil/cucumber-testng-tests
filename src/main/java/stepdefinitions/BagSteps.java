@@ -56,8 +56,6 @@ public class BagSteps {
     }
     @When("enters delivery pincode {string}")
     public void enters_delivery_pincode(String pincode) {
-        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
-        productItem.goToBag();
         CartCheckOutPage bagPage = new CartCheckOutPage();
         bagPage.enterPinCode(pincode);
     }
@@ -86,10 +84,15 @@ public class BagSteps {
 
     @When("removes it from bag")
     public void removes_it_from_a_bag() {
-        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
-        productItem.goToBag();
         CartCheckOutPage bagPage = new CartCheckOutPage();
         bagPage.removeItemFromBag();
+    }
+
+
+    @When("tries to removes it from bag")
+    public void tries_to_removes_it_from_bag() {
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        bagPage.clickRemoveItemFromBag();
     }
 
     @Then("bag should be empty")
@@ -120,8 +123,6 @@ public class BagSteps {
 
     @When("applies at least a coupon from available options")
     public void applies_at_least_a_coupon_from_available_options() {
-        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
-        productItem.goToBag();
         CartCheckOutPage bagPage = new CartCheckOutPage();
         bagPage.applyCoupon();
         ApplyCouponPage coupon = new ApplyCouponPage();
@@ -132,6 +133,25 @@ public class BagSteps {
     public void coupoun_discount_should_be_applied_in_price_details() {
         CartCheckOutPage bagPage = new CartCheckOutPage();
         Assert.assertTrue(bagPage.isCouponApplied());
+    }
+
+    @When("moves to checkout page")
+    public void moves_to_checkout_page() {
+        ProductItemDetailsPage productItem = new ProductItemDetailsPage();
+        productItem.goToBag();
+    }
+
+    @When("cancel the selection of products")
+    public void cancel_the_selection_of_products() {
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        bagPage.cancelSelectionOfItems();
+    }
+
+    @Then("message should displayed as {string} on checkout page")
+    public void message_should_displayed_as_on_checkout_page(String expectedError) {
+        CartCheckOutPage bagPage = new CartCheckOutPage();
+        String errorActual= bagPage.getErrorOnRemovalOfItems();
+        Assert.assertEquals(expectedError,errorActual);
     }
 
 }

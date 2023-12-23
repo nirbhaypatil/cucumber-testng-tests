@@ -45,6 +45,12 @@ public class CartCheckOutPage {
     @FindBy(css="div.addressStrip-base-title")
     public WebElement deliverToPinCode;
 
+    @FindBy(css=".bulkActionStrip-activeIcon")
+    public WebElement cancelSelection;
+
+    @FindBy(css="div.notifyText")
+    public WebElement notifyText;
+
     public CartCheckOutPage(){
         PageFactory.initElements(Keyword.getDriver(),this);
     }
@@ -64,6 +70,11 @@ public class CartCheckOutPage {
         btnRemove.click();
         WaitFor.waitForElementToPresent(dlgRemoveItem);
         dlgBtnRemove.click();
+    }
+
+    public void clickRemoveItemFromBag() {
+        WaitFor.waitForElementToBeClickable(btnRemove);
+        btnRemove.click();
     }
 
     public boolean isCouponApplied(){
@@ -99,5 +110,15 @@ public class CartCheckOutPage {
 
     public String getDeliverToPinCode() {
         return deliverToPinCode.getText();
+    }
+
+    public void cancelSelectionOfItems() {
+        WaitFor.waitForElementToPresent(cancelSelection);
+        cancelSelection.click();
+    }
+
+    public String getErrorOnRemovalOfItems() {
+        WaitFor.waitForElementToPresent(notifyText);
+        return notifyText.getText();
     }
 }
