@@ -6,7 +6,7 @@ Feature:  Verify product item can be added in bag
     And it is added to bag
     Then error should be displayed as "Please select a size"
 
-  Scenario: verify selected product gets added in bag
+  Scenario: Verify selected product gets added in bag
     Given User is on men jeans page
     When User selects a jeans from displayed results
     And chooses a default size
@@ -14,7 +14,7 @@ Feature:  Verify product item can be added in bag
     And moves to checkout page
     Then selected item should get added in bag
 
-  Scenario: verify selected product gets removed from bag
+  Scenario: Verify selected product gets removed from bag
     Given User is on men jeans page
     When User selects a jeans from displayed results
     And chooses a default size
@@ -23,8 +23,7 @@ Feature:  Verify product item can be added in bag
     And removes it from bag
     Then bag should be empty
 
-  @wip
-  Scenario: Verify without selecting a product can not nbe removed from bag
+  Scenario: Verify without selecting a product can not be removed from bag
     Given User is on men jeans page
     When User selects a jeans from displayed results
     And chooses a default size
@@ -34,13 +33,13 @@ Feature:  Verify product item can be added in bag
     And tries to removes it from bag
     Then message should displayed as "Select any item to remove from bag." on checkout page
 
-  Scenario: verify only single size is allowed to select
+  Scenario: Verify only single size is allowed to select
     Given User is on men jeans page
     When User selects a jeans from displayed results
     And chooses all available sizes
     Then only single size is selected
 
-  Scenario: verify coupon gets applied after adding item in bag
+  Scenario: Verify coupon gets applied after adding item in bag
     Given User is on men jeans page
     When User selects a jeans from displayed results
     And chooses a default size
@@ -49,7 +48,7 @@ Feature:  Verify product item can be added in bag
     And applies at least a coupon from available options
     Then coupon discount should be applied in price details
 
-  Scenario: verify delivery pin code can be entered
+  Scenario: Verify delivery pin code can be entered
     Given User is on men jackets page
     When User selects a jacket from displayed results
     And chooses a default size
