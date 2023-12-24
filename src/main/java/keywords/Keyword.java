@@ -179,4 +179,10 @@ public class Keyword {
         Actions action = new Actions(Keyword.getDriver());
         action.moveToElement(menu).perform();
     }
+    public void handleWindows() {
+		Set<String> handles = driver.getWindowHandles();
+		for (String winhandle : handles) {
+			driver.switchTo().window(winhandle);
+		}
+	}
 }
