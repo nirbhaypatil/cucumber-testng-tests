@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Interaction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
+
 import waits.WaitFor;
 
 import java.security.Key;
@@ -16,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SearchResultsPage {
+	Keyword keywords = new Keyword();
 	@FindBy(css = "ul.results-base li.product-base:first-child")
 	public WebElement firstItem;
 
@@ -49,6 +52,29 @@ public class SearchResultsPage {
 
 	@FindBy(css = "div.pdp-add-to-wishlist")
 	public WebElement addWishList;
+
+	@FindBy(css = ".categories-list > li:nth-child(1) > label:nth-child(1)") // .categories-list > li:nth-child(1) >
+																				// label:nth-child(1)
+	public WebElement menRoadsterCheckBox;
+
+	@FindBy(css = "span[data-colorhex=\"black\"]")
+	public WebElement menBlackCheckBox;
+
+	@FindBy(css = "li.product-base:nth-child(27) > a:nth-child(3) > div:nth-child(2) > h3:nth-child(1)")
+	public List<WebElement> productTitles;
+
+	private By productTitle = By
+			.cssSelector("li.product-base:nth-child(27) > a:nth-child(3) > div:nth-child(2) > h3:nth-child(1)");
+
+	@FindBy(css = "li.colour-listItem:nth-child(5) > label:nth-child(1)")
+	public WebElement kidRedColourCheckBox;
+
+	@FindBy(css = "div.sort-sortBy")
+	public WebElement hoverOnSortby;
+
+	@FindBy(css = ".sort-list > li:nth-child(6) > label:nth-child(1)")
+	public WebElement priceLowToHigh;
+
 
 	public SearchResultsPage() {
 		PageFactory.initElements(Keyword.getDriver(), this);
@@ -152,4 +178,43 @@ public class SearchResultsPage {
 	public void enterOnWishList() {
 		addWishList.click();
 	}
+
+	public void selectRoadsterBrandCheckBox() {
+		menRoadsterCheckBox.click();
+	}
+
+	public void selectMenBlackColourCheckBox() {
+		WaitFor.waitForElementToBeClickable(menBlackCheckBox);
+		menBlackCheckBox.click();
+	}
+
+	public List<String> getProductTitles() {
+		WaitFor.numberOfElementsToBeMoreThan(productTitle, 1);
+		return keywords.getTexts(productTitles);
+	}
+
+	public void verifyRoadsterProductTitlesContains(String expectedtext) {
+		List<String> titles = getProductTitles();
+		SoftAssert softly = new SoftAssert();
+		for (String title : titles) {
+			softly.assertTrue(title.contains(expectedtext));
+		}
+		softly.assertAll();
+	}
+
+	public void selectKidsRedColourCheckBox() {
+		//WaitFor.waitForElementToPresent(kidRedColourCheckBox);
+		WaitFor.waitForElementToBeClickable(kidRedColourCheckBox);
+		kidRedColourCheckBox.click();
+	}
+
+	public void mouseHoverOnPriceLowToHigh() {
+		Actions act = new Actions(Keyword.getDriver());
+		WaitFor.waitForElementToPresent(hoverOnSortby);
+		act.moveToElement(hoverOnSortby).click().perform();;
+		WaitFor.waitForElementToBeClickable(priceLowToHigh);
+		act.moveToElement(priceLowToHigh);
+		act.click().perform();
+	}
+
 }
