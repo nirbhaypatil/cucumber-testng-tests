@@ -89,6 +89,11 @@ public class MainMenu {
 		case "Shirts":
 			kidsShirts.click();
 			break;
+			
+		case "Casual Shoes":
+			casualShoes.click();
+			break;
+		
 		}
 	}
 

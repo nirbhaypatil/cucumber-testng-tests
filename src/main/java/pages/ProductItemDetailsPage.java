@@ -4,6 +4,7 @@ import keywords.Keyword;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import waits.WaitFor;
@@ -36,6 +37,13 @@ public class ProductItemDetailsPage {
 
 	@FindBy(css = "div.itemComponents-base-invisibleBackDrop")
 	public WebElement dlgInvisibleComponent;
+
+	@FindBy(css = "h1.pdp-name")
+	public WebElement shoesText;
+
+	@FindBy(css = "li.product-base:nth-child(1) > a:nth-child(2) > div:nth-child(2) > h4:nth-child(3)")
+	public WebElement pTitle;
+ 
 
 	public ProductItemDetailsPage() {
 		PageFactory.initElements(Keyword.getDriver(), this);
@@ -107,5 +115,11 @@ public class ProductItemDetailsPage {
 		}
 		System.out.println(sizesSelected.size() + " selected from number of sizes...");
 		return sizesSelected.size();
+	}
+
+	public void getPomaShoesText() {
+		String productTitle= shoesText.getText();
+		System.out.println(productTitle);
+		Assert.assertEquals(productTitle, "Unisex TRUCO IIl Football Non-Marking Shoes");
 	}
 }
