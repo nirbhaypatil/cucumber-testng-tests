@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import keywords.Keyword;
 import pages.HomePage;
+import pages.MainMenu;
 import pages.SearchResultsPage;
 
 public class ProductAddToBagSteps {
@@ -37,12 +38,14 @@ public class ProductAddToBagSteps {
 		SearchResultsPage results = new SearchResultsPage();
 		results.checkProductAddToBag();
 	}
+
 	@Given("Enter Spark Shoes Men in search component")
 	public void enter_spark_shoes_men_in_search_component() {
 		HomePage homepage = new HomePage();
 		homepage.enterProductToSearch("Spark Shoes Men");
 
 	}
+
 	@When("User click on the search magnifier")
 	public void user_click_on_the_search_magnifier() {
 		HomePage homepage = new HomePage();
@@ -62,6 +65,63 @@ public class ProductAddToBagSteps {
 	public void product_must_be_added_to_the_wish_list() {
 		SearchResultsPage results = new SearchResultsPage();
 		results.enterOnWishList();
+	}
+
+	@Given("Hover on Men Element")
+	public void hover_on_men_element() {
+		MainMenu menu = new MainMenu();
+		menu.hoverOn("Men");
+	}
+
+	@When("User click on Men Jackets")
+	public void user_click_on_men_jackets() {
+		MainMenu menu = new MainMenu();
+		menu.clickOnMenuItem("jackets");
+
+	}
+
+	@When("User select Roadster Brand Checkbox")
+	public void user_select_roadster_brand_checkbox() {
+		SearchResultsPage results = new SearchResultsPage();
+		results.selectRoadsterBrandCheckBox();
+	}
+
+	@When("User select Men Black Colour Checkbox")
+	public void user_select_men_black_colour_checkbox() {
+		SearchResultsPage results = new SearchResultsPage();
+		results.selectMenBlackColourCheckBox();
+
+	}
+
+	@Then("verify Roadster Product Titles contains")
+	public void verify_roadster_product_titles_contains(String pTitles) {
+		SearchResultsPage results = new SearchResultsPage();
+		results.verifyRoadsterProductTitlesContains("Roadster");
+	}
+
+	@Given("Hover on Kids Element")
+	public void hover_on_kids_element() {
+		MainMenu menu = new MainMenu();
+		menu.hoverOn("Kids");
+
+	}
+
+	@When("User Click On Kids Shirts")
+	public void user_click_on_kids_shirts() {
+		MainMenu menu = new MainMenu();
+		menu.clickOnKidsMenuItem("Shirts");
+	}
+
+	@When("User select the Red Colour on Kids Color")
+	public void user_select_the_red_colour_on_kids_color() {
+		SearchResultsPage results = new SearchResultsPage();
+		results.selectKidsRedColourCheckBox();
+	}
+
+	@Then("Mouse hover on Sortby and select price range")
+	public void mouse_hover_on_recommended_and_select_price_range() {
+		SearchResultsPage results = new SearchResultsPage();
+		results.mouseHoverOnPriceLowToHigh();
 	}
 
 }
