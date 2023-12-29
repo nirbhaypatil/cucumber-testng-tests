@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Interaction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import waits.WaitFor;
@@ -75,6 +76,11 @@ public class SearchResultsPage {
 	@FindBy(css = ".sort-list > li:nth-child(6) > label:nth-child(1)")
 	public WebElement priceLowToHigh;
 
+	@FindBy(css = "h3[class=\"product-brand\"]")
+	public WebElement casiowatch;
+
+	@FindBy(css = "[class=\"index-rowValue\"]:nth-child(2)")
+	public WebElement itemDetails;
 
 	public SearchResultsPage() {
 		PageFactory.initElements(Keyword.getDriver(), this);
@@ -203,7 +209,7 @@ public class SearchResultsPage {
 	}
 
 	public void selectKidsRedColourCheckBox() {
-		//WaitFor.waitForElementToPresent(kidRedColourCheckBox);
+		// WaitFor.waitForElementToPresent(kidRedColourCheckBox);
 		WaitFor.waitForElementToBeClickable(kidRedColourCheckBox);
 		kidRedColourCheckBox.click();
 	}
@@ -211,10 +217,25 @@ public class SearchResultsPage {
 	public void mouseHoverOnPriceLowToHigh() {
 		Actions act = new Actions(Keyword.getDriver());
 		WaitFor.waitForElementToPresent(hoverOnSortby);
-		act.moveToElement(hoverOnSortby).click().perform();;
+		act.moveToElement(hoverOnSortby).click().perform();
+		;
 		WaitFor.waitForElementToBeClickable(priceLowToHigh);
 		act.moveToElement(priceLowToHigh);
 		act.click().perform();
+	}
+
+	public void clickOnWatch() {
+		casiowatch.click();
+	}
+
+	public void getItemDetails() {
+
+		Keyword keyword = new Keyword();
+		WaitFor.waitForElementToPresent(itemDetails);
+		String display = itemDetails.getText();
+		System.out.println(display);
+		Assert.assertEquals(display, "Analogue");
+
 	}
 
 }
