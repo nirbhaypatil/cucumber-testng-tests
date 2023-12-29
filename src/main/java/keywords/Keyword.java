@@ -29,6 +29,7 @@ public class Keyword {
 
 	public void openBrowser(String browserName) {
 		if (browserName.equalsIgnoreCase("Chrome")) {
+			
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--disable-notifications");
 			driver = new ChromeDriver(option);
@@ -192,5 +193,12 @@ public class Keyword {
 		}
 		return texts;
 	}
+	
+
+
+	public void scrollWindow() {
+		driver.executeScript("window.scrollBy(0,1800)");		
+	}
+	
 
 }
