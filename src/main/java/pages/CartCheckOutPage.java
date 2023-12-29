@@ -1,6 +1,9 @@
 package pages;
 
 import keywords.Keyword;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,6 +14,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CartCheckOutPage {
+	
+	private static final Logger LOG=LogManager.getLogger(CartCheckOutPage.class);
 
     @FindBy(css="div.emptyCart-base-mainContainer")
     public WebElement emptyCart;
@@ -87,7 +92,7 @@ public class CartCheckOutPage {
             Matcher matcher = pattern.matcher(priceItem);
             System.out.println(priceItem);
             if(matcher.find()){
-                System.out.println("I found the text "+matcher.group()+" starting at index "+
+                LOG.info("I found the text "+matcher.group()+" starting at index "+
                         matcher.start()+" and ending at index "+matcher.end());
                 found= true;
             }

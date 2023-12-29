@@ -1,5 +1,7 @@
 package pages;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,6 +10,10 @@ import keywords.Keyword;
 import waits.WaitFor;
 
 public class HomePage {
+	
+	private static final Logger LOG=LogManager.getLogger(HomePage.class);
+			
+	
 	@FindBy(css = "div.desktop-query>input[placeholder*='Search for']")
 	public WebElement searchComponent;
 
@@ -40,7 +46,7 @@ public class HomePage {
 
 	public void enterProductToSearch(CharSequence... productName) {
 		searchComponent.sendKeys(productName);
-		System.out.println("Entered product: " + productName + " to search");
+		LOG.info("Entered product: " + productName + " to search");
 	}
 
 	public void clickOnSearchMagnifier() {

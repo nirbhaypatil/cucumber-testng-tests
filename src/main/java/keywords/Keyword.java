@@ -2,6 +2,8 @@ package keywords;
 
 import errors.InvalidBrowserError;
 import errors.InvalidSelectorException;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +17,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Keyword {
+	
+	private static final Logger LOG=LogManager.getLogger(Keyword.class);
 
 	private static RemoteWebDriver driver = null;
 
@@ -36,7 +40,7 @@ public class Keyword {
 		} else if (browserName.equalsIgnoreCase("Firefox")) {
 			driver = new FirefoxDriver();
 		} else {
-			System.out.println("Invalid browser name");
+			LOG.info("Invalid browser name");
 			throw new InvalidBrowserError(browserName);
 		}
 
@@ -49,7 +53,7 @@ public class Keyword {
 	 */
 	public void openUrl(String url) {
 		driver.get(url);
-		System.out.println("Launching url");
+		LOG.info("Launching url");
 	}
 
 	/**
