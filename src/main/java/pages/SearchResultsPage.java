@@ -76,11 +76,25 @@ public class SearchResultsPage {
 	@FindBy(css = ".sort-list > li:nth-child(6) > label:nth-child(1)")
 	public WebElement priceLowToHigh;
 
+
 	@FindBy(css = "h3[class=\"product-brand\"]")
 	public WebElement casiowatch;
 
 	@FindBy(css = "[class=\"index-rowValue\"]:nth-child(2)")
 	public WebElement itemDetails;
+
+	@FindBy(css = ".gender-list > li:nth-child(1)")
+	public WebElement kidsFilter;
+
+	@FindBy(css = "li.colour-listItem:nth-child(6)")
+	public WebElement kidsRedColour;
+
+	@FindBy(css = "li.colour-listItem:nth-child(2) > label:nth-child(1)")
+	public WebElement whiteCheckBox;
+
+	@FindBy(css = "img[title=\"Puma Unisex TRUCO IIl Football Non-Marking Shoes\"]")
+	public WebElement enterImg;
+
 
 	public SearchResultsPage() {
 		PageFactory.initElements(Keyword.getDriver(), this);
@@ -218,11 +232,14 @@ public class SearchResultsPage {
 		Actions act = new Actions(Keyword.getDriver());
 		WaitFor.waitForElementToPresent(hoverOnSortby);
 		act.moveToElement(hoverOnSortby).click().perform();
+
 		;
+
 		WaitFor.waitForElementToBeClickable(priceLowToHigh);
 		act.moveToElement(priceLowToHigh);
 		act.click().perform();
 	}
+
 
 	public void clickOnWatch() {
 		casiowatch.click();
@@ -236,6 +253,26 @@ public class SearchResultsPage {
 		System.out.println(display);
 		Assert.assertEquals(display, "Analogue");
 
+	}
+
+
+	public void selectKidsBoysFilter() {
+		WaitFor.waitForElementToBeClickable(kidsFilter);
+		kidsFilter.click();
+	}
+
+	public void clickOnRedColourCheckBox() {
+		WaitFor.waitForElementToBeClickable(kidsRedColour);
+		kidsRedColour.click();
+	}
+
+	public void selectWhiteCheckBoxOfPomaShoes() {
+		whiteCheckBox.click();
+	}
+
+	public void clickOnPomaWhiteShoes() {
+		WaitFor.waitForElementToBeClickable(enterImg);
+		enterImg.click();
 	}
 
 }
